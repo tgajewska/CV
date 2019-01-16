@@ -1,0 +1,46 @@
+// main: main.scss
+
+/* colors */
+
+// basic elements
+
+$text-color : #333;
+
+$orange : #ffa715;
+$green : #a8ef19;
+$blue : #47c7ff;
+$pink : #fb4997;
+$yellow: #fafd3c;
+$light-blue: #04f4f5;
+$gray-3-color : #909090;
+
+$basic-colors: $gray-3-color, #fff;
+
+$colors: $green $orange $blue $pink $light-blue;
+
+$sections-number: 5;
+
+
+
+/* fonts */
+
+$font-default : 'Open Sans', sans-serif;
+
+/* RWD */
+
+$sm-min: 576px;
+$md-min: 768px;
+$lg-min: 992px;
+$xl-min: 1200px;
+
+$xs-max: ($sm-min - 1);	 // 575
+$sm-max: ($md-min - 1);  // 767
+$md-max: ($lg-min - 1);  // 991
+$lg-max: ($xl-min - 1);  // 1199
+
+$media-sm:         "only screen and (min-width: " + $sm-min + ") and (max-width: " + $sm-max + ")";
+
+$media-sm-min:         "only screen and (min-width: " + $sm-min + ")";
+$media-md-min:         "only screen and (min-width: " + $md-min + ")";
+$media-lg-min:         "only screen and (min-width: " + $lg-min + ")";
+$media-xl-min:         "only screen and (min-width: " + $xl-min + ")";

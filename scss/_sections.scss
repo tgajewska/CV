@@ -1,0 +1,61 @@
+// main: main.scss
+
+.section1 {
+	.right {
+		.photo {
+			width:100%;
+			height: 180px;
+			background-image: url('../images/ja.jpg');
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-size: cover;
+			margin-top: 0.4rem;
+			margin-bottom: 1rem;
+		}
+	}
+}
+
+.section2 {
+	.right {
+		padding-top: 1.5rem;
+		span:hover {cursor: default;}
+	}
+}
+
+.section3 {
+	.left {
+		padding-top: 0.5rem;
+	}
+}
+
+.section4 {
+	.right {
+		padding-top: 0.5rem;
+		.contents {
+			.github-logo {
+				background-image: url('../images/github.svg');
+				background-repeat: no-repeat;
+				background-position: center center;
+				background-size: contain;
+				width: 50px;
+				height: 50px;
+				margin-bottom: 1rem;
+				@include transition(0.3s ease-in);
+				&:hover {
+					@include transition(0.3s ease-out);
+					@include transform(scale(1.1));
+				}
+			}
+		}
+	}
+}
+
+.section5 .right .contents {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	margin-bottom: 2rem;
+		@media #{$media-md-min} {
+			margin-bottom: 0;
+		}
+}

@@ -1,0 +1,87 @@
+// main: main.scss
+
+
+/* functions */
+
+@mixin transform($attr) {
+	-webkit-transform: $attr;
+	-moz-transform: $attr;
+	-ms-transform: $attr;
+	-o-transform: $attr;
+	transform: $attr;
+}
+
+@mixin transition($attr) {
+	-webkit-transition: $attr;
+	-moz-transition: $attr;
+	-ms-transition: $attr;
+	-o-transition: $attr;
+	transition: $attr;
+}
+
+
+@mixin box-shadow($attr) {
+	-webkit-box-shadow: $attr;
+	-moz-tbox-shadow: $attr;
+	-ms-box-shadow: $attr;
+	-o-box-shadow: $attr;
+	box-shadow: $attr;
+}
+
+@mixin basic-colors($color-default-num, $color-main-num) {
+	background: nth($basic-colors, $color-default-num);
+	color: nth($basic-colors, $color-main-num);
+}
+
+@mixin colors($color) {
+	color: nth($colors, $color);
+}
+
+@for $i from 1 through $sections-number {
+
+	@if $i % 2 == 0 {
+		.section#{$i} {@include basic-colors(1, 2);}
+
+		@media #{$media-md-min} {
+			.section#{$i} .left {
+				@include basic-colors(2, 1);
+			}
+			.section#{$i} .right {
+				@include basic-colors(1, 2);
+			}
+		}
+	}
+
+	@else {
+		.section#{$i} {@include basic-colors(2, 1);}
+
+		@media #{$media-md-min} {
+			.section#{$i} .left {
+				@include basic-colors(1, 2);
+			}
+			.section#{$i} .right {
+				@include basic-colors(2, 1);
+			}
+		}
+	}
+
+	@media #{$media-md-min} {
+		.section#{$i} .left .contents { padding-left: 10%; }
+		.section#{$i} .right .contents { padding-right: 10%; }
+	}
+
+	@media #{$media-lg-min} {
+		.section#{$i} .left .contents { padding-left: 40%; }
+		.section#{$i} .right .contents { padding-right: 40%; }
+	}
+
+	.section#{$i} {
+		a:hover, .section-color, .color-hover:hover { @include colors($i); }
+	}
+	header .navbar .nav .nav-item .nav-link.nav-section#{$i},
+	header .navbar .nav .nav-item .nav-link.nav-section#{$i}.dark,
+	 {
+		@include colors($i);
+		font-weight: bold;
+	}
+}
