@@ -1,4 +1,5 @@
 const path = require('path');
+var OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -6,13 +7,14 @@ const webpack = require('webpack');
 const GoogleFontsPlugin = require("@beyonk/google-fonts-webpack-plugin");
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
 
+
+
 module.exports = {
     entry: './src/index.js',
     output: {
         filename: 'bundle.[contenthash].js',
         path: path.resolve(__dirname, 'dist')
     },
-    mode: 'production',
     module: {
         rules: [
             {
@@ -32,7 +34,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.scss$/,
+                test: /\.(scss|sass)$/,
                 use: [
                     MiniCssExtractPlugin.loader,
                     'css-loader',
@@ -68,6 +70,12 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'main.[contenthash].css'
         }),
+        new OptimizeCSSAssetsPlugin({
+            cssProcessorPluginOptions: {
+                preset: ['default', { discardComments: { removeAll: true } }],
+            }
+        }),
+        new CleanWebpackPlugin('dist'),
         new CleanWebpackPlugin('dist'),
         new HtmlWebpackPlugin({
             filename: 'index.html',
